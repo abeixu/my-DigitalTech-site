@@ -1,20 +1,18 @@
 ---
+title: "首页"
 layout: landing
 ---
 
-<div class="book-hero">
+# 科技与商业知识库
 
-# Documentation {anchor=false}
-This content is rendered from `content/index.md`
+记录对科技、商业与现实世界的系统性理解。
 
-{{<button href="/docs/">}}Action{{</button>}}
+## 内容专栏
 
-</div>
+### 科技
+人工智能、信息论、计算机科学等知识。
 
-{{% columns %}}
-- ## Nunc infans rigidique etiam
-  Lorem markdownum quondam mediamque visis aevi, peregrinaeque Aeacidae, vita vos? Iacet exhortatus picta plures; placet Pandrose tremescere; mediis aera enim resonat scinditur dea nocuit fabrilis est per. Signum pater paventes pectore maris humo, aegide illos religarat si! Romana secutis erat, cum omnia vincere virtutem nomine ascensu poenas? Gradus cum quoque potitur.
+### 商业
+产业结构、商业模式、战略与运营等知识。
 
-- ## Carmina fallacia polluit lenta
-  Lorem markdownum, omnes exire lumen noctis concava multaque fieri inplevere oculi *nisi sua* subigebat iamque? Herse sum `hardBox`, pervenit linguae altera. Clymenen magna illi latera parent omnia felicia ter bifurcum nulla atque alta cannas ita? Pariter stetit carina adspexerit spargentem festa concrevit `process_upnp` primos! Huic et sulphure paelice iuppiter vitat quem genitas, fera vertice relinque.
-{{% /columns %}}
+[开始阅读文章](/docs/)
