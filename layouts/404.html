@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>页面未找到 · {{ site.Title }}</title>
+    {{- with resources.Get "css/custom.css" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- end }}
+  </head>
+  <body class="error-page">
+    <main>
+      <p class="error-code" aria-hidden="true">404</p>
+      <h1>页面未找到</h1>
+      <p>这个页面可能已移动，或者地址有误。</p>
+      <a href="{{ site.Home.RelPermalink }}">返回首页 →</a>
+    </main>
+  </body>
+</html>

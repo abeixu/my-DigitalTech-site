@@ -1,0 +1,11 @@
+<div class="topic-links">
+  {{- range slice "/docs/technology" "/docs/business" }}
+    {{- with site.GetPage . }}
+  <a class="topic-link" href="{{ .RelPermalink }}">
+    <span class="topic-name">{{ .Title }}<span aria-hidden="true">↗</span></span>
+    <span class="topic-description">{{ .Description }}</span>
+    <span class="topic-action">进入栏目 <span aria-hidden="true">→</span></span>
+  </a>
+    {{- end }}
+  {{- end }}
+</div>

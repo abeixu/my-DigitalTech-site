@@ -1,23 +1,48 @@
 baseURL: "https://fuckai001.com/"
 title: "工业化阿北"
-languageCode: "zh-CN"
-theme: "hugo-book"
+locale: "zh-CN"
+defaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+theme: "hugo-theme-relearn"
+enableRobotsTXT: true
+disableKinds: [taxonomy, term]
 
 markup:
   goldmark:
     renderer:
       unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)'], ['$', '$']]
+  highlight:
+    noClasses: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
 
 params:
-  BookTheme: "light"
-  BookSection: "docs"
-  BookSearch: true
-  BookToC: true
-  BookBreadcrumbs: true
-  BookComments: false
-
-menu:
-  home:
-    - name: "文章"
-      pageRef: "/docs/"
-      weight: 10
+  themeVariant: "relearn-light"
+  disableLandingPageButton: false
+  landingPageName: "首页"
+  disableRootBreadcrumb: false
+  disableExplicitIndexURLs: true
+  disableSearchHiddenPages: true
+  disableSeoHiddenPages: true
+  disableTagHiddenPages: true
+  disableInlineCopyToClipBoard: true
+  showVisitedLinks: false
+  collapsibleMenu: true
+  alwaysopen: true
+  ordersectionsby: "weight"
+  titleSeparator: "·"
+  hideAuthorDate: true
+  dateFormat: "2006年01月02日"
+  math: true
+  search:
+    adapter:
+      identifier: "chinese"
+  sidebarFooterMenus:
+    - type: "divider"

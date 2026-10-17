@@ -1,0 +1,9 @@
+{{- $pages := where .Page.Pages "Params.hidden" "ne" true }}
+{{- with $pages }}
+<h2 id="栏目文章">栏目文章</h2>
+<ul>
+  {{- range .ByWeight }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{- end }}
+</ul>
+{{- end }}

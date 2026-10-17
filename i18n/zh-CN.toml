@@ -1,0 +1,16 @@
+[home-button]
+other = "首页"
+[Search-placeholder]
+other = "搜索知识库…"
+[title-404]
+other = "页面未找到"
+[message-404]
+other = "这个页面可能已移动，或者地址有误。"
+[Go-to-homepage]
+other = "返回首页"
+[Show-Markdown]
+other = "查看原文"
+[No-results-found]
+other = "没有找到与“{0}”相关的内容"
+[N-results-found]
+other = "找到 {1} 条与“{0}”相关的内容"
