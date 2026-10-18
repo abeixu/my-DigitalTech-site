@@ -25,9 +25,9 @@ markup:
 
 params:
   themeVariant: "relearn-light"
-  disableLandingPageButton: false
-  landingPageName: "首页"
-  disableRootBreadcrumb: false
+  disableLandingPageButton: true
+  disableRootBreadcrumb: true
+  disableNextPrev: true
   disableExplicitIndexURLs: true
   disableSearchHiddenPages: true
   disableSeoHiddenPages: true
@@ -42,7 +42,10 @@ params:
   dateFormat: "2006年01月02日"
   math: true
   search:
-    adapter:
-      identifier: "chinese"
+    disable: true
+    index:
+      disable: true
+    page:
+      disable: true
   sidebarFooterMenus:
     - type: "divider"

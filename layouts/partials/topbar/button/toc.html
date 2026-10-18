@@ -1,0 +1,20 @@
+{{- with .page }}
+  {{- if not .Params.legacyExample }}
+    {{- $content := partial "toc-class.html" . }}
+    {{- if not (strings.TrimSpace ($content | plainify)) }}
+      {{- $content = `<p class="toc-empty">本篇文章暂无章节目录。</p>` | safeHTML }}
+    {{- end }}
+    {{- partial "topbar/func/button.html" (dict
+      "page" .
+      "class" "topbar-button-toc"
+      "href" "javascript:toggleTopbarFlyout(this)"
+      "title" "文章目录"
+      "hint" "展开本篇文章目录"
+      "onempty" "show"
+      "onwidths" "show"
+      "onwidthm" "show"
+      "onwidthl" "show"
+      "content" $content
+    ) }}
+  {{- end }}
+{{- end }}
