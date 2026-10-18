@@ -1,1 +1,5 @@
-{{- if not .Params.legacyExample }}{{ .TableOfContents }}{{ end -}}
+{{- if eq .Params.hub "technology" -}}
+<nav id="TableOfContents"><ul><li><a href="#人工智能">人工智能</a></li><li><a href="#信息论">信息论</a></li><li><a href="#计算机科学">计算机科学</a></li></ul></nav>
+{{- else if eq .Params.hub "business" -}}
+<nav id="TableOfContents"><ul><li><a href="#产业结构">产业结构</a></li><li><a href="#商业模式">商业模式</a></li><li><a href="#战略与运营">战略与运营</a></li></ul></nav>
+{{- else if not .Params.legacyExample }}{{ .TableOfContents }}{{ end -}}

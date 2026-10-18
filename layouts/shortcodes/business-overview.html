@@ -1,0 +1,12 @@
+<p class="page-intro">从具体的商业现象出发，理解需求、供给、组织与价值创造之间的关系。</p>
+<div class="business-subjects">
+  {{ range slice (dict "title" "产业结构" "en" "INDUSTRY" "description" "梳理产业链中的分工与联系，理解一个行业如何形成、发展和变化。") (dict "title" "商业模式" "en" "BUSINESS MODELS" "description" "围绕服务谁、解决什么问题、如何创造收入与承担成本，理解企业的运作方式。") (dict "title" "战略与运营" "en" "STRATEGY & OPERATIONS" "description" "连接方向选择与日常执行，理解目标、资源、流程和结果之间的关系。") }}
+  <section class="subject-item">
+    <span class="topic-eyebrow">{{ .en }}</span>
+    <h2 id="{{ .title }}">{{ .title }}</h2>
+    <p>{{ .description }}</p>
+    <span class="topic-status">笔记整理中</span>
+  </section>
+  {{ end }}
+</div>
+<p class="page-note">相关学习笔记正在整理中。</p>

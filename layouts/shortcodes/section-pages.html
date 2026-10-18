@@ -1,9 +1,9 @@
 {{- $pages := where .Page.Pages "Params.hidden" "ne" true }}
 {{- with $pages }}
 <h2 id="栏目文章">栏目文章</h2>
-<ul>
-  {{- range .ByWeight }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+<ol class="chapter-list">
+  {{- range $index, $page := .ByWeight }}
+  <li><a href="{{ $page.RelPermalink }}"><span class="chapter-number">{{ printf "%02d" (add $index 1) }}</span><span class="chapter-title">{{ $page.Title }}</span><span class="chapter-arrow" aria-hidden="true">↗</span></a></li>
   {{- end }}
-</ul>
+</ol>
 {{- end }}

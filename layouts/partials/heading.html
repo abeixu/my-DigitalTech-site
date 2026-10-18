@@ -1,0 +1,5 @@
+{{- $title := partial "title.gotmpl" (dict "page" .) }}
+<div class="page-heading">
+  <p class="page-eyebrow">{{ if eq .Section "llm" }}专题学习 <span>/ LARGE LANGUAGE MODELS</span>{{ else }}知识笔记 <span>/ {{ if eq .Params.hub "technology" }}TECHNOLOGY{{ else if eq .Params.hub "business" }}BUSINESS{{ else }}TECHNOLOGY & BUSINESS{{ end }}</span>{{ end }}</p>
+  <h1 id="{{ $title | plainify | anchorize }}">{{ $title }}</h1>
+</div>
