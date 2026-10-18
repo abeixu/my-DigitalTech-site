@@ -34,6 +34,8 @@ body { line-height: 1.85; }
   --INTERNAL-MENU-SECTION-SEPARATOR-color: #D9DFDF;
 }
 #R-header { padding-block: 1.2rem 1rem; }
+#R-header-topbar { border-inline-end: 0; }
+#R-homelinks .R-menu-divider:last-child hr { border-bottom: 0; }
 #R-logo { display: block; text-align: left; }
 #R-logo .brand-name { display: block; font-size: 1.6rem; font-weight: 600; line-height: 1.5; letter-spacing: .06em; }
 #R-logo .brand-caption { display: block; margin-top: .4rem; font-size: .8rem; font-weight: 400; letter-spacing: .08em; opacity: .8; }
