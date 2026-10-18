@@ -35,7 +35,7 @@ params:
   disableInlineCopyToClipBoard: true
   showVisitedLinks: false
   collapsibleMenu: true
-  alwaysopen: true
+  alwaysopen: false
   ordersectionsby: "weight"
   titleSeparator: "·"
   hideAuthorDate: true

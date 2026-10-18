@@ -47,10 +47,11 @@ body { line-height: 1.85; }
   --INTERNAL-TOPBAR-BUTTON-HOVER-color: #0969DA;
 }
 #R-header-wrapper { padding-block-start: 0; padding-inline: 1.5rem; }
-#R-header { padding-block: 10px 1rem; }
+#R-header { padding-block: 20px 1rem; }
 #R-header-topbar { border-inline-end: 0; }
 #R-homelinks .R-menu-divider:last-child hr { border-bottom: 0; }
-#R-header a#R-logo { display: flex; align-items: center; text-align: left; }
+#R-header a#R-logo { display: flex; align-items: center; gap: .5rem; text-align: left; }
+#R-logo .brand-avatar { display: block; flex: none; width: 3.25rem; height: 3.25rem; border-radius: .4rem; object-fit: cover; }
 #R-logo .brand-copy { display: flex; min-width: 0; flex-direction: column; }
 #R-logo .brand-name { display: block; font-size: 23px; color: #EA4335; font-weight: 600; line-height: 1.4; letter-spacing: .03em; }
 #R-logo .brand-caption { display: block; margin-top: calc(.25rem + 1pt); font-size: 16px; color: #34A853; font-weight: 400; line-height: 1.45; letter-spacing: 0; white-space: nowrap; }
@@ -89,6 +90,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 /* 目录项与单篇文章从同一位置开始，整行用于选中状态。 */
 #R-sidebar ul.collapsible-menu > li > :is(input, label) { display: none; }
 #R-sidebar ul ul { padding-inline-start: 0; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li { margin-block-end: 1pt; }
 #R-sidebar ul.enlarge > li > :is(a, span) {
   font-size: inherit;
   line-height: 1.6;
@@ -104,6 +106,21 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li:has(> ul > li) > a {
   color: #0969DA;
+}
+#R-sidebar .R-sidebarmenu li:has(> ul > li) > a::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 10px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-inline-end: 1.5px solid currentColor;
+  border-block-end: 1.5px solid currentColor;
+  transform: translateY(-50%) rotate(-45deg);
+  transition: transform .25s ease;
+}
+#R-sidebar .R-sidebarmenu li:has(> ul > li) > a[aria-expanded="true"]::before {
+  transform: translateY(-65%) rotate(45deg);
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > ul > li > :is(a, span) {
   padding-inline-start: calc(1.5rem + 1em);

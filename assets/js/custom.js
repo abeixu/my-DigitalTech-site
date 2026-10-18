@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const groups = [];
   document.querySelectorAll('#R-sidebar .R-sidebarmenu li').forEach(item => {
     const article = item.querySelector(':scope > a');
     const toggle = item.querySelector(':scope > input[type="checkbox"]');
     const children = item.querySelector(':scope > ul');
     if (!article || !toggle || !children?.children.length) return;
+
+    groups.push({ item, toggle });
+    toggle.checked = item.classList.contains('active') || item.classList.contains('parent');
 
     article.setAttribute('role', 'button');
     article.setAttribute('aria-controls', children.id);
@@ -21,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggle.addEventListener('change', () => {
       sync();
+      if (toggle.checked) {
+        groups.forEach(other => {
+          if (other.item !== item && !item.contains(other.item) && !other.item.contains(item) && other.toggle.checked) {
+            other.toggle.click();
+          }
+        });
+      }
       const height = children.getBoundingClientRect().height;
       children.style.height = `${height}px`;
       setAccessibility();
