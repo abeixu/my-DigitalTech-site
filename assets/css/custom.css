@@ -1,8 +1,23 @@
 /* Layout refinements; navigation behavior remains native Relearn. */
 :root {
-  --MENU-WIDTH-S: 15rem;
-  --MENU-WIDTH-M: 15rem;
-  --MENU-WIDTH-L: 15rem;
+  --MENU-WIDTH-S: 18rem;
+  --MENU-WIDTH-M: 18rem;
+  --MENU-WIDTH-L: 18rem;
+}
+/* Fixed colors for the title and directory areas only. */
+#R-sidebar {
+  --INTERNAL-MENU-HEADER-color: #FFFFFF;
+  --INTERNAL-MENU-HEADER-BG-color: #DA7757;
+  --INTERNAL-MENU-HEADER-BORDER-color: #DA7757;
+  --INTERNAL-MENU-SECTIONS-BG-color: #FAF9F5;
+  --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: transparent;
+  --INTERNAL-MENU-SECTIONS-LINK-color: #000000;
+  --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #000000;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color: #000000;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #EFEEEA;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: transparent;
+  --INTERNAL-MENU-BORDER-color: transparent;
+  --INTERNAL-MENU-VISITED-color: #000000;
 }
 #R-header-wrapper {
   box-sizing: border-box;
@@ -21,11 +36,13 @@
   width: 100%;
   border: 0;
   text-align: center;
+  font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
 }
 #R-header a#R-logo {
   display: block;
   width: 100%;
   margin: 0;
+  font-family: inherit;
   font-size: 1.875rem;
   line-height: 1.35;
   text-align: center;
@@ -46,8 +63,13 @@
 #R-body-inner { padding-block-start: 1.25rem; }
 
 /* Leave room for complete titles and the native visited-page checkmark. */
-#R-sidebar .R-sidebarmenu ul ul { padding-inline-start: .5rem; }
+#R-sidebar .R-sidebarmenu ul ul { padding-inline-start: 0; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu > li { --menu-title-indent: 0rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: .5rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1.5rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem));
   padding-inline-end: 2rem;
   white-space: nowrap;
 }
@@ -56,6 +78,7 @@
 /* Center the smaller chevron within its title row, not the expanded subtree. */
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label {
   inset-block-start: 0;
+  inset-inline-start: var(--menu-title-indent, 0rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,5 +106,16 @@
   transform-origin: center;
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> input + label) > a {
-  padding-inline-start: calc(1rem + 1.5pt);
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + 1.5pt);
+}
+
+/* Row backgrounds reach both edges; indentation belongs to the text. */
+#R-sidebar #R-content-wrapper > .R-sidebarmenu { border-inline-end: 0; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li.active > a {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  padding-block: .25rem;
+  background: #EFEEEA;
+  color: #000000;
 }
