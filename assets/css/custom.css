@@ -46,7 +46,8 @@ body { line-height: 1.85; }
   --INTERNAL-TOPBAR-BUTTON-color: #0969DA;
   --INTERNAL-TOPBAR-BUTTON-HOVER-color: #0969DA;
 }
-#R-header { padding-block: 1.2rem 1rem; }
+#R-header-wrapper { padding-block-start: 0; padding-inline: 1.5rem; }
+#R-header { padding-block: 10px 1rem; }
 #R-header-topbar { border-inline-end: 0; }
 #R-homelinks .R-menu-divider:last-child hr { border-bottom: 0; }
 #R-header a#R-logo { display: flex; align-items: center; text-align: left; }
@@ -96,8 +97,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   box-sizing: border-box;
   display: block;
   width: 100%;
-  font-size: 17px;
-  padding: .25rem 1rem;
+  font-size: 16px;
+  padding: .25rem 1.5rem;
   text-align: left;
   border: 0;
 }
@@ -105,10 +106,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   color: #0969DA;
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > ul > li > :is(a, span) {
-  padding-inline-start: calc(1rem + 1em);
+  padding-inline-start: calc(1.5rem + 1em);
 }
-#R-topbar .topbar-breadcrumbs { font-size: 16px; }
+#R-sidebar .R-sidebarmenu li.menu-animated > ul {
+  display: block !important;
+  overflow: hidden;
+  transition: height .4s ease, opacity .4s ease;
+}
+#R-topbar .topbar-breadcrumbs { padding-inline: 20px; font-size: 16px; }
 #R-topbar .topbar-button-toc > .btn { white-space: nowrap; }
+#R-topbar .topbar-button-toc .btn > button { padding-inline: 12px 4px; }
 #R-topbar .topbar-button-toc .topbar-content {
   min-width: min(19rem, calc(100vw - 2rem));
   max-width: calc(100vw - 2rem);
