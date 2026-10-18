@@ -1,8 +1,8 @@
 /* Layout refinements for Relearn's native checkbox navigation. */
 :root {
-  --MENU-WIDTH-S: 18rem;
-  --MENU-WIDTH-M: 18rem;
-  --MENU-WIDTH-L: 18rem;
+  --MENU-WIDTH-S: 15rem;
+  --MENU-WIDTH-M: 15rem;
+  --MENU-WIDTH-L: 15rem;
 }
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
@@ -55,7 +55,7 @@
 #R-header .site-subtitle {
   margin: 0;
   max-width: 100%;
-  font-size: .875rem;
+  font-size: .8125rem;
   line-height: 1.7;
   white-space: nowrap;
   text-align: center;
