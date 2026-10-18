@@ -2,17 +2,6 @@
 :root {
   --PRIMARY-color: #708781;
   --PRIMARY-HOVER-color: #516c65;
-  --MENU-HEADER-BG-color: #E3E5E5;
-  --MENU-HEADER-BORDER-color: #D9DFDF;
-  --MENU-HEADER-color: #293a39;
-  --MENU-SECTIONS-BG-color: #F5F6F5;
-  --MENU-SECTIONS-ACTIVE-BG-color: #D9DFDF;
-  --MENU-SECTIONS-LINK-color: #334543;
-  --MENU-SECTIONS-LINK-HOVER-color: #172c29;
-  --MENU-SECTION-ACTIVE-CATEGORY-color: #1f3330;
-  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #D9DFDF;
-  --MENU-BORDER-color: #D9DFDF;
-  --MENU-SECTION-SEPARATOR-color: #D9DFDF;
   --MAIN-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --MAIN-font-weight: 400;
   --MAIN-TITLES-font: var(--MAIN-font);
@@ -29,6 +18,21 @@
   --PRINT-MAIN-font: var(--MAIN-font);
 }
 body { line-height: 1.85; }
+/* The theme variant defines its colors with a more specific root selector.
+   Scope sidebar tokens here so its computed colors win on the actual element. */
+#R-sidebar {
+  --INTERNAL-MENU-HEADER-BG-color: #E3E5E5;
+  --INTERNAL-MENU-HEADER-BORDER-color: #D9DFDF;
+  --INTERNAL-MENU-HEADER-color: #293a39;
+  --INTERNAL-MENU-SECTIONS-BG-color: #F5F6F5;
+  --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: #D9DFDF;
+  --INTERNAL-MENU-SECTIONS-LINK-color: #334543;
+  --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #172c29;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color: #1f3330;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #D9DFDF;
+  --INTERNAL-MENU-BORDER-color: #D9DFDF;
+  --INTERNAL-MENU-SECTION-SEPARATOR-color: #D9DFDF;
+}
 #R-header { padding-block: 1.2rem 1rem; }
 #R-logo { display: block; text-align: left; }
 #R-logo .brand-name { display: block; font-size: 1.6rem; font-weight: 600; line-height: 1.5; letter-spacing: .06em; }
