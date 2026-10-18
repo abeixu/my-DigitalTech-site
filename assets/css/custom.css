@@ -87,8 +87,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 
 /* 目录项与单篇文章从同一位置开始，整行用于选中状态。 */
 #R-sidebar ul.collapsible-menu > li > :is(input, label) { display: none; }
-#R-sidebar ul.collapsible-menu > li > input + label ~ ul,
-#R-sidebar ul ul { display: block; padding-inline-start: 0; }
+#R-sidebar ul ul { padding-inline-start: 0; }
 #R-sidebar ul.enlarge > li > :is(a, span) {
   font-size: inherit;
   line-height: 1.6;
@@ -97,13 +96,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   box-sizing: border-box;
   display: block;
   width: 100%;
-  font-size: 16px;
+  font-size: 17px;
   padding: .25rem 1rem;
   text-align: left;
   border: 0;
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li:has(> ul > li) > a {
   color: #0969DA;
+}
+#R-sidebar .R-sidebarmenu ul.collapsible-menu > li > ul > li > :is(a, span) {
+  padding-inline-start: calc(1rem + 1em);
 }
 #R-topbar .topbar-breadcrumbs { font-size: 16px; }
 #R-topbar .topbar-button-toc > .btn { white-space: nowrap; }
