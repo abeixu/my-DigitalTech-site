@@ -1,12 +1,8 @@
-/* 中文排版、浅色菜单与顶部导航。 */
+/* 中文排版与浅色侧栏。 */
 :root {
   --PRIMARY-color: #708781;
   --PRIMARY-HOVER-color: #516c65;
-  --TOPBAR-BG-color: #E3E5E5;
-  --TOPBAR-TEXT-color: #293a39;
-  --TOPBAR-LINK-color: #394e4b;
-  --TOPBAR-LINK-HOVER-color: #182b29;
-  --MENU-HEADER-BG-color: #F5F6F5;
+  --MENU-HEADER-BG-color: #E3E5E5;
   --MENU-HEADER-BORDER-color: #D9DFDF;
   --MENU-HEADER-color: #293a39;
   --MENU-SECTIONS-BG-color: #F5F6F5;
