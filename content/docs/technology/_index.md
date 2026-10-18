@@ -22,4 +22,4 @@ description: "人工智能、信息论与计算机科学的学习笔记。"
 
 相关学习笔记正在整理中。
 
-{{< section-pages >}}
+{{% children depth="1" sort="weight" %}}

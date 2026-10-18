@@ -1,11 +1,16 @@
 baseURL: "https://fuckai001.com/"
 title: "疯狂阿北"
-locale: "zh-CN"
+languageCode: "zh-CN"
 defaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 theme: "hugo-theme-relearn"
 enableRobotsTXT: true
 disableKinds: [taxonomy, term]
+
+outputs:
+  home: [html, rss, print]
+  section: [html, rss, print]
+  page: [html, print]
 
 markup:
   goldmark:
@@ -24,28 +29,38 @@ markup:
     endLevel: 3
 
 params:
-  themeVariant: "relearn-light"
+  # Match the official Relearn documentation site's variants and default mode.
+  themeVariant:
+    - identifier: relearn-auto
+      name: "Relearn Light/Dark"
+      auto: [relearn-light, relearn-dark]
+    - identifier: relearn-dark
+    - identifier: relearn-light
+    - identifier: relearn-bright
+    - identifier: zen-auto
+      name: "Zen Light/Dark"
+      auto: [zen-light, zen-dark]
+    - identifier: zen-dark
+    - identifier: zen-light
+    - identifier: retro-auto
+      name: "Retro Learn/Neon"
+      auto: [learn, neon]
+    - identifier: neon
+    - identifier: learn
+    - identifier: blue
+    - identifier: green
+    - identifier: red
   disableLandingPageButton: true
   disableRootBreadcrumb: true
-  disableNextPrev: true
   disableExplicitIndexURLs: true
   disableSearchHiddenPages: true
   disableSeoHiddenPages: true
   disableTagHiddenPages: true
   disableInlineCopyToClipBoard: true
-  showVisitedLinks: false
+  showVisitedLinks: true
   collapsibleMenu: true
-  alwaysopen: false
   ordersectionsby: "weight"
   titleSeparator: "·"
   hideAuthorDate: true
   dateFormat: "2006年01月02日"
   math: true
-  search:
-    disable: true
-    index:
-      disable: true
-    page:
-      disable: true
-  sidebarFooterMenus:
-    - type: "divider"

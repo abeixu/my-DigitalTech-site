@@ -1,18 +1,21 @@
-# 工业化阿北 · 科技与商业知识库
+# 疯狂阿北 · 科技与商业知识库
 
 网站地址：https://fuckai001.com/
 
-本项目继续使用 Hugo + GitHub + Cloudflare Pages，主题已迁移为 Relearn 8.3.0。主题子模块固定在提交 `57a5af8154477e659fb1a408f42a83ab22c10324`，升级需单独验证。
+技术栈：Hugo + GitHub + Cloudflare Pages。直接使用 Relearn 官方主题的布局、字体、颜色和交互。
+主题子模块固定在 Relearn 8.3.0 提交 `57a5af8154477e659fb1a408f42a83ab22c10324`，升级需单独验证。
 
-## 页面与风格
+## 页面与功能
 
-- 全中文界面，单一浅色模式；深色侧边目录、绿色强调色、浅色正文。
-- 根地址直接跳转到知识目录 → 科技 / 商业；原首页文档已删除。
-- 顶部保留文章路径，右侧“文章目录”点击展开本篇章节；不提供上一篇、下一篇按钮。
-- 科技与商业是栏目介绍，文章尚待整理；不会把原主题的占位文章当作正式内容。
-- 站内搜索及搜索框均已移除，不生成搜索页或搜索索引。
-- 数学公式、主题字体和脚本从本站加载，无需依赖外部公式服务。
-- 窄屏自动收起侧栏，首页栏目入口改为单列。
+- 采用官方文档站的主题配色列表，默认自动跟随系统切换 Relearn 浅色／深色。
+- 使用主题原生的侧栏、折叠箭头、面包屑、文章目录、搜索、打印和上一篇／下一篇。
+- 侧栏底部提供主题切换、阅读历史清理和官方署名。
+- 仅头像、站名和副标题使用本站品牌；自定义 CSS 仅用于品牌标识排版。
+- 首页提供阅读入口，“知识目录”和“大模型LLM”保持顶层并列。
+- 现有文章路径保持不变，大模型专栏九篇文章按 weight 排序。
+- 栏目通过主题原生 children 短代码列出子文章，不覆盖主题内容布局。
+- 公式、字体、搜索索引和脚本从本站加载。
+- 原主题示例继续隐藏，不加入菜单、搜索和站点地图；旧地址保留中文提示。
 
 ## 本地运行
 
@@ -24,71 +27,42 @@ cd my-DigitalTech-site
 hugo server
 ```
 
-已有仓库更新后，先同步主题：
+已有仓库更新后：
 
 ```sh
-git submodule sync
 git submodule update --init --recursive
 hugo --minify --panicOnWarning
 ```
 
 ## 新增文章
 
-科技文章放在 `content/docs/technology/`，商业文章放在 `content/docs/business/`。子目录的 `_index.md` 用于建立多级栏目。
-
-```sh
-hugo new content docs/technology/first-note.md
-```
-
-将文章头部的 `draft: true` 改为 `draft: false` 后发布。标题使用中文；`weight` 数值越小，排序越靠前。正文从二级标题开始，页面标题由主题生成。
+科技文章放在 `content/docs/technology/`，商业文章放在 `content/docs/business/`，大模型文章放在 `content/llm/`。
+目录的 `_index.md` 用于建立多级栏目，`weight` 越小越靠前。
 
 ```yaml
 ---
 title: "文章标题"
 weight: 10
-draft: false
 ---
 ```
 
-栏目页会自动列出新增文章，侧栏也会随构建更新。
+正文从二级标题开始，页面标题由主题生成。支持 `$...$`、`\(...\)`、`$$...$$` 和 `\[...\]` 公式。
 
-## 数学公式
+## 项目配置
 
-支持行内公式 `$y = wx + b$`、`\(y = wx + b\)`，以及块公式：
+- `hugo.yaml`：站名、输出格式和主题功能参数。
+- `content/_index.md`：首页内容。
+- `layouts/partials/logo.html`、`assets/css/custom.css`：本站品牌标识。
+- `layouts/partials/content.html`：隐藏旧示例正文的兼容提示。
+- `i18n/zh-CN.toml`：中文翻译。
 
-```tex
-\[
-L = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-\]
-```
+不要直接修改主题子模块。页面布局和交互由主题原文件维护。
 
-也可以使用 `$$` 包围块公式。公式由主题自带的 MathJax 渲染。
-
-## 调整外观
-
-- `hugo.yaml`：站名、主题、导航及公式设置。
-- `assets/css/custom.css`：中文字体、行距、内容宽度、侧栏宽度、移动端布局。
-- `layouts/partials/logo.html`：侧栏站名。
-- `layouts/partials/topbar/`：文章目录按钮与顶部区域。
-- `i18n/zh-CN.toml`：中文提示文字。
-
-不要直接修改 `themes/hugo-theme-relearn/`，在项目的 `layouts/` 和 `assets/` 中覆盖对应文件即可。
-
-## 原主题示例
-
-`content/docs/section-1/` 和 `content/posts/` 中保留了原示例正文与地址，标记为 `hidden: true` 和 `legacyExample: true`。它们不进入菜单、站内搜索、站点地图和订阅列表；访问旧地址时只显示中文说明。
-
-需要恢复某一示例时，删除它的 `hidden`、`legacyExample`、`disableToc` 和 `outputs` 配置。原首页和原目录介绍也可通过 Git 历史恢复。
-
-## 部署与回退
-
-继续使用已有的 Cloudflare Pages 项目及自定义域名，不需要改动 DNS。
+## 部署
 
 - 生产分支：`main`
 - 构建命令：`hugo --minify`
 - 输出目录：`public`
 - 建议环境变量：`HUGO_VERSION=0.158.0`
 
-构建依赖 Git 子模块，请确保克隆过程获取主题子模块。仓库现有的构建工作流也会获取子模块并执行构建。
-
-需要回退时，在 GitHub 中回退本次迁移提交，Cloudflare Pages 会按原来的主题重新构建。也可以在 Cloudflare Pages 中回滚到先前成功的部署。
+Cloudflare Pages 克隆时需要获取主题子模块。无需改动 DNS。

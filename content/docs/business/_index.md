@@ -22,4 +22,4 @@ description: "产业结构、商业模式、战略与运营的学习笔记。"
 
 相关学习笔记正在整理中。
 
-{{< section-pages >}}
+{{% children depth="1" sort="weight" %}}

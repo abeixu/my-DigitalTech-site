@@ -5,7 +5,7 @@ weight: 10
 
 知识库围绕科技与商业两条主线整理。选择一个栏目，开始阅读。
 
-{{< topic-links >}}
+{{% children description="true" depth="1" sort="weight" %}}
 
 ## 阅读思路
 
