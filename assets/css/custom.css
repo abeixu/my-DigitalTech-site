@@ -1,4 +1,4 @@
-/* Layout refinements; navigation behavior remains native Relearn. */
+/* Layout refinements for Relearn's native checkbox navigation. */
 :root {
   --MENU-WIDTH-S: 18rem;
   --MENU-WIDTH-M: 18rem;
@@ -7,7 +7,8 @@
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
   --menu-row-inset: 2pt;
-  --menu-arrow-gap: 3.5pt;
+  --menu-arrow-inset: 2pt;
+  --menu-arrow-gap: 2.5pt;
   --INTERNAL-MENU-HEADER-color: #FFFFFF;
   --INTERNAL-MENU-HEADER-BG-color: #DA7757;
   --INTERNAL-MENU-HEADER-BORDER-color: #DA7757;
@@ -79,7 +80,7 @@
 /* Center the smaller chevron within its title row, not the expanded subtree. */
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label {
   inset-block-start: 0;
-  inset-inline-start: calc(var(--menu-title-indent, 0rem) + var(--menu-row-inset));
+  inset-inline-start: calc(var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-inset));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,13 +102,13 @@
   flex: none;
   width: 1em;
   height: 1em;
-  font-size: .7rem;
+  font-size: .5625rem;
   line-height: 1;
   text-align: center;
   transform-origin: center;
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> input + label) > a {
-  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-gap));
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-inset) + var(--menu-arrow-gap));
 }
 /* Reduce category headings one step; child article typography stays native. */
 #R-sidebar .R-sidebarmenu ul.enlarge.collapsible-menu > li:has(> input + label) > a {

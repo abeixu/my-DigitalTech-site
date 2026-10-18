@@ -1,0 +1,4 @@
+{{- /* Restore menu state before deferred theme scripts measure the sidebar. */ -}}
+{{- with resources.Get "js/menu-state.js" | minify }}
+<script>{{ .Content | safeJS }}</script>
+{{- end }}

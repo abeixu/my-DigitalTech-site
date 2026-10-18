@@ -1,0 +1,34 @@
+{{- $title := "" }}
+{{- with .page }}
+  {{- $siteTitle := site.Title }}
+  {{- if $.linkTitle }}
+    {{- $siteTitle := or site.Params.linkTitle site.Title }}
+  {{- end }}
+  {{- $title = .Title }}
+  {{- if $.linkTitle }}
+    {{- $title = or .LinkTitle $title }}
+  {{- end }}
+
+  {{- if eq .Kind "home" }}
+    {{- $title = $title | default $siteTitle }}
+  {{- else if eq .Kind "taxonomy" }}
+    {{- $title = default (default .Data.Plural (i18n .Data.Plural)) .Params.Title }}
+  {{- else if eq .Kind "term" }}
+    {{- $taxonomy_page := .Site.GetPage .Data.Plural }}
+    {{- $taxonomy_title := default (default $taxonomy_page.Data.Singular (i18n $taxonomy_page.Data.Singular)) $taxonomy_page.Params.SingularTitle }}
+    {{- $term_title := default (humanize .Data.Term | strings.Title) .Title }}
+    {{- if $.linkTitle }}
+      {{- $title = printf "%s" $term_title }}
+    {{- else if $.reverse }}
+      {{- $title = printf "%s %s %s" $term_title (default "::" .Site.Params.titleSeparator) $taxonomy_title }}
+    {{- else }}
+      {{- $title = printf "%s %s %s" $taxonomy_title (default "::" .Site.Params.titleSeparator) $term_title }}
+    {{- end }}
+  {{- end }}
+
+  {{- /* Keep browser tabs fixed while article headings retain their titles. */}}
+  {{- if $.fullyQualified }}
+    {{- $title = $siteTitle }}
+  {{- end }}
+{{- end }}
+{{- return $title }}
