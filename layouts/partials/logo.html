@@ -1,5 +1,5 @@
 <a id="R-logo" href="{{ partial "permalink.gotmpl" (dict "to" .Site.Home) }}" aria-label="疯狂阿北，前往首页">
-  <img class="site-avatar" src="{{ "images/abei-next.webp" | relURL }}" width="64" height="64" alt="">
+  {{ partial "shortcodes/image.html" (dict "page" . "url" "/images/logo.svg?border=false&inlinecontent&lightbox=false&shadow=false") }}
   <span class="logo-title">{{ site.Title }}</span>
 </a>
 <div class="site-subtitle">商业和科技理解</div>

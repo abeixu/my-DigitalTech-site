@@ -1,5 +1,4 @@
-/* Site identity only. Layout, fonts, colors and interactions use Relearn defaults.
-   Logo proportions follow the official Relearn documentation site. */
+/* Official Relearn logo proportions; native theme colors and article behavior. */
 #R-logo {
   font-size: 1.875rem;
   margin-bottom: -.666rem;
@@ -7,13 +6,13 @@
   max-width: 100%;
   width: 14.125rem;
 }
-#R-logo .site-avatar {
+#R-logo svg {
   display: inline-block;
-  width: 29%;
-  height: auto;
+  opacity: .945;
   vertical-align: middle;
-  border-radius: .35rem;
+  width: 29% !important;
 }
+#R-logo svg * { opacity: .945; }
 #R-logo .logo-title {
   display: inline-block;
   width: 4.5em;
@@ -21,8 +20,10 @@
   text-align: left;
   overflow-wrap: break-word;
 }
+#R-logo .logo-title,
+#R-header .site-subtitle { color: var(--INTERNAL-MENU-HEADER-color); }
 .site-subtitle { margin-top: .75rem; font-size: .875rem; }
 @media only all and (max-width: 59.999rem) {
   #R-logo { font-size: 1.5625rem; margin-block: -.1875rem; }
-  #R-logo .site-avatar { width: 24.5%; }
+  #R-logo svg { width: 24.5% !important; }
 }

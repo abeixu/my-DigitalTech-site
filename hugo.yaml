@@ -7,6 +7,10 @@ theme: "hugo-theme-relearn"
 enableRobotsTXT: true
 disableKinds: [taxonomy, term]
 
+cascade:
+  params:
+    search: false
+
 outputs:
   home: [html, rss, print]
   section: [html, rss, print]
@@ -59,6 +63,15 @@ params:
   disableInlineCopyToClipBoard: true
   showVisitedLinks: true
   collapsibleMenu: true
+  alwaysopen: true
+  sidebarHeaderMenus: []
+  sidebarFooterMenus: []
+  search:
+    disable: true
+    index:
+      disable: true
+    page:
+      disable: true
   ordersectionsby: "weight"
   titleSeparator: "·"
   hideAuthorDate: true
