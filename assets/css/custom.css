@@ -6,9 +6,9 @@
 }
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
-  --menu-row-inset: 2pt;
+  --menu-row-inset: 3.5pt;
   --menu-arrow-inset: 2pt;
-  --menu-arrow-gap: 2.5pt;
+  --menu-arrow-gap: 3.5pt;
   --INTERNAL-MENU-HEADER-color: #FFFFFF;
   --INTERNAL-MENU-HEADER-BG-color: #DA7757;
   --INTERNAL-MENU-HEADER-BORDER-color: #DA7757;
@@ -17,7 +17,7 @@
   --INTERNAL-MENU-SECTIONS-LINK-color: #000000;
   --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #000000;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color: #000000;
-  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #EFEEEA;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #E5E4DF;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: transparent;
   --INTERNAL-MENU-BORDER-color: transparent;
 }
@@ -129,6 +129,6 @@
   border: 0;
   border-radius: 0;
   padding-block: .25rem;
-  background: #EFEEEA;
+  background: #E5E4DF;
   color: #000000;
 }

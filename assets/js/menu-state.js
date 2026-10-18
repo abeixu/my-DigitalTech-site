@@ -1,4 +1,4 @@
-/* Remember only explicit changes to each native Relearn menu checkbox. */
+/* Start closed, then restore explicit changes to each native menu checkbox. */
 (() => {
   const inputs = document.querySelectorAll('#R-sidebar .R-sidebarmenu .collapsible-menu input[type="checkbox"][id]');
   const keyFor = (input) => 'crazy-abei:menu:' + input.id;
@@ -6,15 +6,15 @@
   const restore = () => {
     let changed = false;
     inputs.forEach((input) => {
+      let saved = null;
       try {
-        const saved = window.sessionStorage.getItem(keyFor(input));
-        if (saved === 'open' || saved === 'closed') {
-          changed = changed || input.checked !== (saved === 'open');
-          input.checked = saved === 'open';
-        }
+        saved = window.sessionStorage.getItem(keyFor(input));
       } catch {
-        // Keep native navigation usable if browser storage is unavailable.
+        // First visits still start closed when browser storage is unavailable.
       }
+      const isOpen = saved === 'open';
+      changed = changed || input.checked !== isOpen;
+      input.checked = isOpen;
     });
     return changed;
   };

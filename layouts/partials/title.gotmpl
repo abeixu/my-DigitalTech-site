@@ -28,7 +28,7 @@
 
   {{- /* Keep browser tabs fixed while article headings retain their titles. */}}
   {{- if $.fullyQualified }}
-    {{- $title = $siteTitle }}
+    {{- $title = site.Params.browserTabTitle | default $siteTitle }}
   {{- end }}
 {{- end }}
 {{- return $title }}

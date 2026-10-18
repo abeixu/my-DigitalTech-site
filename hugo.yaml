@@ -63,7 +63,8 @@ params:
   disableInlineCopyToClipBoard: true
   showVisitedLinks: false
   collapsibleMenu: true
-  alwaysopen: true
+  alwaysopen: false
+  browserTabTitle: "疯狂阿北 - 商业 · 科技 · 组织和人。"
   sidebarHeaderMenus: []
   sidebarFooterMenus: []
   search:
