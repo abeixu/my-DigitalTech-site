@@ -1,8 +1,8 @@
 /* Layout refinements for Relearn's native checkbox navigation. */
 :root {
-  --MENU-WIDTH-S: 15rem;
-  --MENU-WIDTH-M: 15rem;
-  --MENU-WIDTH-L: 15rem;
+  --MENU-WIDTH-S: 275px;
+  --MENU-WIDTH-M: 275px;
+  --MENU-WIDTH-L: 275px;
 }
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
