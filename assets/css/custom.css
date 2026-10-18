@@ -12,20 +12,20 @@
   --MAIN-TITLES-H2-letter-spacing: 0;
   --MAIN-TITLES-H3-letter-spacing: 0;
   --MAIN-MAX-width: 70rem;
-  --MENU-WIDTH-S: 17rem;
-  --MENU-WIDTH-M: 17rem;
-  --MENU-WIDTH-L: 19rem;
+  --MENU-WIDTH-S: 15rem;
+  --MENU-WIDTH-M: 15rem;
+  --MENU-WIDTH-L: 15rem;
   --PRINT-MAIN-font: var(--MAIN-font);
 }
 body { line-height: 1.85; }
 /* The theme variant defines its colors with a more specific root selector.
    Scope sidebar tokens here so its computed colors win on the actual element. */
 #R-sidebar {
-  --INTERNAL-MENU-HEADER-BG-color: #E3E5E5;
-  --INTERNAL-MENU-HEADER-BORDER-color: #D9DFDF;
+  --INTERNAL-MENU-HEADER-BG-color: #F5F6F5;
+  --INTERNAL-MENU-HEADER-BORDER-color: #F5F6F5;
   --INTERNAL-MENU-HEADER-color: #293a39;
   --INTERNAL-MENU-SECTIONS-BG-color: #F5F6F5;
-  --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: #D9DFDF;
+  --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: #F5F6F5;
   --INTERNAL-MENU-SECTIONS-LINK-color: #334543;
   --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #172c29;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color: #1f3330;
@@ -36,9 +36,11 @@ body { line-height: 1.85; }
 #R-header { padding-block: 1.2rem 1rem; }
 #R-header-topbar { border-inline-end: 0; }
 #R-homelinks .R-menu-divider:last-child hr { border-bottom: 0; }
-#R-logo { display: block; text-align: left; }
-#R-logo .brand-name { display: block; font-size: 1.6rem; font-weight: 600; line-height: 1.5; letter-spacing: .06em; }
-#R-logo .brand-caption { display: block; margin-top: .4rem; font-size: .8rem; font-weight: 400; letter-spacing: .08em; opacity: .8; }
+#R-logo { display: flex; align-items: center; gap: .75rem; text-align: left; }
+#R-logo .brand-avatar { display: block; flex: none; width: 3.5rem; height: 3.5rem; border-radius: .5rem; object-fit: cover; }
+#R-logo .brand-copy { display: flex; min-width: 0; flex-direction: column; }
+#R-logo .brand-name { display: block; font-size: 1.4rem; font-weight: 600; line-height: 1.4; letter-spacing: .03em; }
+#R-logo .brand-caption { display: block; margin-top: .25rem; font-size: .94rem; font-weight: 400; line-height: 1.45; letter-spacing: 0; opacity: .85; white-space: nowrap; }
 #R-body h1 { font-size: clamp(1.8rem, 3vw, 2.65rem); text-transform: none; line-height: 1.5; margin-bottom: 1.5rem; }
 #R-body h2 { font-size: 1.5rem; line-height: 1.6; margin-top: 2.4rem; }
 #R-body h3 { font-size: 1.2rem; line-height: 1.6; }
@@ -118,3 +120,4 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 }
 #R-topbar .topbar-button-toc .TableOfContents { min-width: 0; }
 #R-topbar .topbar-button-toc .toc-empty { margin: .5rem 0; white-space: nowrap; }
+.topbar-button-toc.toc-disabled .btn > button { color: #929a9a; cursor: not-allowed; opacity: 1; }

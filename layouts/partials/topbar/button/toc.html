@@ -1,10 +1,8 @@
 {{- with .page }}
   {{- if not .Params.legacyExample }}
     {{- $content := partial "toc-class.html" . }}
-    {{- if not (strings.TrimSpace ($content | plainify)) }}
-      {{- $content = `<p class="toc-empty">本篇文章暂无章节目录。</p>` | safeHTML }}
-    {{- end }}
-    {{- partial "topbar/func/button.html" (dict
+    {{- if strings.TrimSpace ($content | plainify) }}
+      {{- partial "topbar/func/button.html" (dict
       "page" .
       "class" "topbar-button-toc"
       "href" "javascript:toggleTopbarFlyout(this)"
@@ -15,6 +13,11 @@
       "onwidthm" "show"
       "onwidthl" "show"
       "content" $content
-    ) }}
+      ) }}
+    {{- else }}
+      <div class="topbar-button topbar-button-toc toc-disabled" data-width-s="show" data-width-m="show" data-width-l="show">
+        <span class="btn cstyle button link noborder noicon"><button type="button" disabled title="本篇文章暂无章节目录"><span class="title">文章目录</span></button></span>
+      </div>
+    {{- end }}
   {{- end }}
 {{- end }}
