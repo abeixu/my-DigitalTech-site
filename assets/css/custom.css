@@ -89,6 +89,7 @@ body {
   transition: background .18s, color .18s;
 }
 #R-sidebar .R-sidebarmenu li.active > a { background: #dfe7d7; color: #35452e; font-weight: 500; }
+#R-sidebar .R-sidebarmenu ul.morespace.collapsible-menu li.active > a { padding-block: 9px; }
 #R-sidebar .R-sidebarmenu li > a:hover { background: #e6eadf; color: #35452e; }
 #R-sidebar .R-sidebarmenu li:has(> ul > li) > a { color: #3f4d37; font-weight: 500; }
 #R-sidebar .R-sidebarmenu li:has(> ul > li) > a::before {
