@@ -1,11 +1,16 @@
-/* Center the text-only brand within the native Relearn header. */
+/* Layout refinements; navigation behavior remains native Relearn. */
+:root {
+  --MENU-WIDTH-S: 15rem;
+  --MENU-WIDTH-M: 15rem;
+  --MENU-WIDTH-L: 15rem;
+}
 #R-header-wrapper {
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
-  padding: 24px 8px;
+  min-height: 106.667px;
+  padding: 12px 8px;
 }
 #R-header {
   display: flex;
@@ -31,7 +36,7 @@
 #R-header .site-subtitle {
   margin: 0;
   max-width: 100%;
-  font-size: .8125rem;
+  font-size: .75rem;
   line-height: 1.7;
   white-space: nowrap;
   text-align: center;
@@ -40,3 +45,38 @@
   #R-header a#R-logo { font-size: 1.5625rem; }
   #R-header .site-subtitle { font-size: .75rem; }
 }
+
+/* Remove the entire topbar row without changing the theme's article scripts. */
+#R-topbar, #R-header-topbar { display: none; }
+#R-body-inner { padding-block-start: 1.25rem; }
+
+/* Leave room for complete titles and the native visited-page checkmark. */
+#R-sidebar .R-sidebarmenu ul ul { padding-inline-start: .5rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
+  padding-inline-end: 2rem;
+  white-space: nowrap;
+}
+#R-sidebar .R-sidebarmenu .collapsible-menu > li { margin-block-end: 1pt; }
+
+/* Keep mobile navigation available without adding a row above the article. */
+.mobile-menu-toggle { display: none; }
+@media screen and (max-width: 47.999rem) {
+  .mobile-menu-toggle {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    inset-inline-start: 10px;
+    bottom: 12px;
+    z-index: 80;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--INTERNAL-MAIN-TEXT-color);
+    border-radius: 6px;
+    background: var(--INTERNAL-MAIN-BG-color);
+    color: var(--INTERNAL-MAIN-TEXT-color);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+@media print { .mobile-menu-toggle { display: none; } }
