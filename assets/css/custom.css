@@ -67,15 +67,21 @@
 /* Keep full-width rows while moving their labels slightly inward. */
 #R-sidebar .R-sidebarmenu ul ul { padding-inline-start: 0; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li { --menu-title-indent: 0rem; }
-#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: .5rem; }
-#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1rem; }
-#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1.5rem; }
+/* Each level starts one Chinese character (16px) after its parent title. */
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 2rem; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 3rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
-  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset));
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-inset) + var(--menu-arrow-gap));
   padding-inline-end: 1rem;
   white-space: nowrap;
 }
 #R-sidebar .R-sidebarmenu .collapsible-menu > li { margin-block-end: 1pt; }
+/* The parent row supplies the gap before the next directory, open or closed. */
+#R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li:last-child {
+  padding-block-end: 0;
+  margin-block-end: 0;
+}
 
 /* Center the smaller chevron within its title row, not the expanded subtree. */
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label {
@@ -102,13 +108,10 @@
   flex: none;
   width: 1em;
   height: 1em;
-  font-size: .5625rem;
+  font-size: .625rem;
   line-height: 1;
   text-align: center;
   transform-origin: center;
-}
-#R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> input + label) > a {
-  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-inset) + var(--menu-arrow-gap));
 }
 /* Reduce category headings one step; child article typography stays native. */
 #R-sidebar .R-sidebarmenu ul.enlarge.collapsible-menu > li:has(> input + label) > a {
