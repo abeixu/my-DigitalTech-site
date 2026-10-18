@@ -17,7 +17,7 @@
   --INTERNAL-MENU-SECTIONS-LINK-color: #000000;
   --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #000000;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-color: #000000;
-  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #E5E4DF;
+  --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #EFEEEA;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: transparent;
   --INTERNAL-MENU-BORDER-color: transparent;
 }
@@ -129,6 +129,6 @@
   border: 0;
   border-radius: 0;
   padding-block: .25rem;
-  background: #E5E4DF;
+  background: #EFEEEA;
   color: #000000;
 }

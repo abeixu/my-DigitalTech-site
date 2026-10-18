@@ -64,7 +64,7 @@ params:
   showVisitedLinks: false
   collapsibleMenu: true
   alwaysopen: false
-  browserTabTitle: "疯狂阿北 - 商业 · 科技 · 组织和人。"
+  browserTabTitle: "疯狂阿北"
   sidebarHeaderMenus: []
   sidebarFooterMenus: []
   search:
