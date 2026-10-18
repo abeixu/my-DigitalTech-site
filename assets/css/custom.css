@@ -6,6 +6,8 @@
 }
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
+  --menu-row-inset: 2pt;
+  --menu-arrow-gap: 3.5pt;
   --INTERNAL-MENU-HEADER-color: #FFFFFF;
   --INTERNAL-MENU-HEADER-BG-color: #DA7757;
   --INTERNAL-MENU-HEADER-BORDER-color: #DA7757;
@@ -17,7 +19,6 @@
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: #EFEEEA;
   --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: transparent;
   --INTERNAL-MENU-BORDER-color: transparent;
-  --INTERNAL-MENU-VISITED-color: #000000;
 }
 #R-header-wrapper {
   box-sizing: border-box;
@@ -53,7 +54,7 @@
 #R-header .site-subtitle {
   margin: 0;
   max-width: 100%;
-  font-size: .75rem;
+  font-size: .875rem;
   line-height: 1.7;
   white-space: nowrap;
   text-align: center;
@@ -62,15 +63,15 @@
 #R-topbar, #R-header-topbar { display: none; }
 #R-body-inner { padding-block-start: 1.25rem; }
 
-/* Leave room for complete titles and the native visited-page checkmark. */
+/* Keep full-width rows while moving their labels slightly inward. */
 #R-sidebar .R-sidebarmenu ul ul { padding-inline-start: 0; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li { --menu-title-indent: 0rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: .5rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 1.5rem; }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
-  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem));
-  padding-inline-end: 2rem;
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset));
+  padding-inline-end: 1rem;
   white-space: nowrap;
 }
 #R-sidebar .R-sidebarmenu .collapsible-menu > li { margin-block-end: 1pt; }
@@ -78,7 +79,7 @@
 /* Center the smaller chevron within its title row, not the expanded subtree. */
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label {
   inset-block-start: 0;
-  inset-inline-start: var(--menu-title-indent, 0rem);
+  inset-inline-start: calc(var(--menu-title-indent, 0rem) + var(--menu-row-inset));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,11 +107,19 @@
   transform-origin: center;
 }
 #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> input + label) > a {
-  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + 1.5pt);
+  padding-inline-start: calc(1rem + var(--menu-title-indent, 0rem) + var(--menu-row-inset) + var(--menu-arrow-gap));
+}
+/* Reduce category headings one step; child article typography stays native. */
+#R-sidebar .R-sidebarmenu ul.enlarge.collapsible-menu > li:has(> input + label) > a {
+  font-size: 1rem;
 }
 
 /* Row backgrounds reach both edges; indentation belongs to the text. */
 #R-sidebar #R-content-wrapper > .R-sidebarmenu { border-inline-end: 0; }
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li:not(.active) > a:hover,
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li:not(.active):has(> label:hover) > a {
+  background: #F4F3EF;
+}
 #R-sidebar .R-sidebarmenu ul.collapsible-menu li.active > a {
   width: 100%;
   border: 0;

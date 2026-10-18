@@ -61,7 +61,7 @@ params:
   disableSeoHiddenPages: true
   disableTagHiddenPages: true
   disableInlineCopyToClipBoard: true
-  showVisitedLinks: true
+  showVisitedLinks: false
   collapsibleMenu: true
   alwaysopen: true
   sidebarHeaderMenus: []
