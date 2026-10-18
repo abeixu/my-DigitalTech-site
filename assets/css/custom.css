@@ -33,11 +33,18 @@ body { line-height: 1.85; }
   --INTERNAL-MENU-BORDER-color: #D9DFDF;
   --INTERNAL-MENU-SECTION-SEPARATOR-color: #D9DFDF;
 }
+#R-body {
+  --INTERNAL-MAIN-LINK-color: #0969DA;
+  --INTERNAL-MAIN-LINK-HOVER-color: #0969DA;
+  --INTERNAL-TOPBAR-LINK-color: #0969DA;
+  --INTERNAL-TOPBAR-LINK-HOVER-color: #0969DA;
+  --INTERNAL-TOPBAR-BUTTON-color: #0969DA;
+  --INTERNAL-TOPBAR-BUTTON-HOVER-color: #0969DA;
+}
 #R-header { padding-block: 1.2rem 1rem; }
 #R-header-topbar { border-inline-end: 0; }
 #R-homelinks .R-menu-divider:last-child hr { border-bottom: 0; }
-#R-header a#R-logo { display: flex; align-items: center; gap: .75rem; text-align: left; }
-#R-logo .brand-avatar { display: block; flex: none; width: 3.5rem; height: 3.5rem; border-radius: .5rem; object-fit: cover; }
+#R-header a#R-logo { display: flex; align-items: center; text-align: left; }
 #R-logo .brand-copy { display: flex; min-width: 0; flex-direction: column; }
 #R-logo .brand-name { display: block; font-size: 1.4rem; font-weight: 600; line-height: 1.4; letter-spacing: .03em; }
 #R-logo .brand-caption { display: block; margin-top: .25rem; font-size: .94rem; font-weight: 400; line-height: 1.45; letter-spacing: 0; opacity: .85; white-space: nowrap; }
@@ -73,45 +80,24 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   #R-body .topic-link { break-inside: avoid; margin-bottom: 1rem; }
 }
 
-/* 目录箭头和栏目文字共用同一行布局，避免行高造成的错位。 */
-#R-sidebar ul.collapsible-menu > li:has(> input) {
-  display: grid;
-  grid-template-columns: 1.25rem minmax(0, 1fr);
-  column-gap: .5rem;
-  padding-inline-start: .5rem;
+/* 目录项与单篇文章从同一位置开始，整行用于选中状态。 */
+#R-sidebar ul.collapsible-menu > li > :is(input, label) { display: none; }
+#R-sidebar ul.collapsible-menu > li > input + label ~ ul,
+#R-sidebar ul ul { display: block; padding-inline-start: 0; }
+#R-sidebar ul.enlarge > li > :is(a, span) {
+  font-size: inherit;
+  line-height: 1.6;
 }
-#R-sidebar ul.collapsible-menu > li:has(> input) > label {
-  position: static;
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  width: 1.25rem;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
-}
-#R-sidebar ul.collapsible-menu > li:has(> input) > label::after { display: none; }
-#R-sidebar ul.collapsible-menu > li:has(> input) > label > .fas { text-align: center; }
-#R-sidebar ul.collapsible-menu > li:has(> input) > :is(a, span) {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  min-height: 2.75rem;
-  padding-inline-start: 0;
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li > :is(a, span) {
+  box-sizing: border-box;
+  display: block;
   width: 100%;
+  padding: .25rem 1rem;
+  text-align: left;
+  border: 0;
 }
-#R-sidebar ul.collapsible-menu > li:has(> input) > ul {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  padding-inline-start: 1.25rem;
-}
-#R-sidebar ul.collapsible-menu > li > input:focus-visible + label {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+#R-sidebar .R-sidebarmenu ul.collapsible-menu li:has(> ul > li) > a {
+  color: #0969DA;
 }
 #R-topbar .topbar-button-toc > .btn { white-space: nowrap; }
 #R-topbar .topbar-button-toc .topbar-content {
