@@ -589,3 +589,95 @@ body[data-site-area="people"] #R-body-inner {visibility:hidden;}
     align-content: center;
   }
 }
+
+
+/* Crazy abei sidebar and navigation corrections - 2026-10-19 */
+:root {
+  --MENU-WIDTH-S: 265px;
+  --MENU-WIDTH-M: 265px;
+  --MENU-WIDTH-L: 265px;
+  --abei-side-bg: #E3EAF2;
+  --abei-sidebar-left: 25px;
+  --abei-sidebar-top: 20px;
+}
+
+/* Brand is plain text, not a home link. */
+.site-header span#R-logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--abei-brand-size);
+  font-weight: 900;
+  letter-spacing: -1.9px;
+  line-height: 1;
+  color: var(--abei-brand);
+  white-space: nowrap;
+  cursor: default;
+}
+@media screen {
+  .site-header {
+    padding-right: max(var(--abei-article-pad), calc((100vw - 265px - var(--abei-article-max)) / 2));
+  }
+  #R-sidebar {
+    background: var(--abei-side-bg);
+    --INTERNAL-MENU-HEADER-BG-color: var(--abei-side-bg);
+    --INTERNAL-MENU-HEADER-BORDER-color: var(--abei-side-bg);
+    --INTERNAL-MENU-SECTIONS-BG-color: var(--abei-side-bg);
+    --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: transparent;
+    --INTERNAL-MENU-SECTION-ACTIVE-CATEGORY-BG-color: var(--abei-active-bg);
+  }
+  #R-sidebar #R-content-wrapper {
+    background: var(--abei-side-bg);
+    padding-top: var(--abei-sidebar-top);
+  }
+  #R-sidebar #R-content-wrapper .R-sidebarmenu,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li {
+    background-color: var(--abei-side-bg);
+  }
+  /* The 20px top offset belongs to the first row, not to an extra ul margin. */
+  #R-sidebar #R-content-wrapper .R-sidebarmenu > ul {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  /* Relearn highlights .parent AND .active containers. Never highlight the
+     entire container; only the link corresponding to the current page. */
+  #R-sidebar .R-sidebarmenu ul.enlarge > li.parent,
+  #R-sidebar .R-sidebarmenu ul.enlarge > li.active,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li.parent,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li.active {
+    background: var(--abei-side-bg) !important;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li.parent > a {
+    background: transparent;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li.active > a {
+    background: var(--abei-active-bg);
+    color: var(--abei-menu-active);
+  }
+  body[data-site-area="home"] #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
+    background: transparent;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li:not(.active) > a:hover {
+    background: var(--abei-active-bg);
+  }
+  /* There is no arrow: folder titles themselves are the only toggle target. */
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label {
+    display: none !important;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> label > input[type="checkbox"]) > a {
+    font-weight: 700 !important;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:not(:has(> label > input[type="checkbox"])) > a {
+    font-weight: 400;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .site-header { padding-right: 24px; }
+}
+@media screen and (max-width: 700px) {
+  .site-header { padding-right: 15px; }
+}

@@ -1,65 +1,55 @@
-/* Folder titles are links first, disclosures second.
- * - First visit to a folder: navigate to its article normally.
- * - Clicking the already-open folder title: toggle child list.
- * - Leaf article: always navigate normally, even if already selected.
- * Keep the theme's native checkbox so its CSS animation still works. */
+/* Independent folder state, with article-first / repeat-click toggle behavior.
+   Each directory has its own session key, so navigating to another article
+   does not automatically expand or collapse unrelated directories. */
 (() => {
-  const normalizePath = (url) => {
-    const path = new URL(url, document.baseURI).pathname;
-    return (path.replace(/\/index\.html$/i, "/").replace(/\/+$/, "") || "/");
+  const canonical = (value) => {
+    const path = new URL(value, document.baseURI).pathname;
+    return path.replace(/\/index\.html$/i, '/').replace(/\/+$/, '') || '/';
   };
-  const currentPath = normalizePath(window.location.href);
-  const folderSelector = '#R-sidebar .R-sidebarmenu ul.collapsible-menu li';
-  const folders = [];
+  const current = canonical(location.href);
+  const restoreCallbacks = [];
 
-  document.querySelectorAll(folderSelector).forEach((li) => {
+  document.querySelectorAll('#R-sidebar .R-sidebarmenu ul.collapsible-menu li').forEach((li) => {
     const link = li.querySelector(':scope > a');
-    const input = li.querySelector(':scope > label > input[type="checkbox"]');
-    if (!link || !input) return;
+    const control = li.querySelector(':scope > label > input[type="checkbox"]');
+    if (!link || !control) return; // Leaf pages have no disclosure.
+    const href = canonical(link.href);
+    const storageKey = 'crazy-abei:folder:' + href;
 
-    const key = 'crazy-abei:folder:' + normalizePath(link.href);
-    const save = () => {
+    function restore() {
+      let saved = null;
+      try { saved = sessionStorage.getItem(storageKey); } catch {}
+      // Important: ignore Hugo's automatic active-ancestor expansion.
+      // Only a user's own prior toggle determines whether this folder opens.
+      control.checked = saved === 'open';
+      link.setAttribute('aria-expanded', String(control.checked));
+    }
+    function persist() {
+      link.setAttribute('aria-expanded', String(control.checked));
       try {
-        sessionStorage.setItem(key, input.checked ? 'open' : 'closed');
-      } catch {
-        // Interaction still works when browser storage is unavailable.
-      }
-    };
-    const restore = () => {
-      try {
-        const saved = sessionStorage.getItem(key);
-        if (saved === 'open') input.checked = true;
-        else if (saved === 'closed') input.checked = false;
-      } catch {
-        // Leave the Hugo-provided initial checked state intact.
-      }
-      link.setAttribute('aria-expanded', String(input.checked));
-    };
+        sessionStorage.setItem(storageKey, control.checked ? 'open' : 'closed');
+      } catch {}
+    }
 
     restore();
-    folders.push({ restore });
-    input.addEventListener('change', () => {
-      link.setAttribute('aria-expanded', String(input.checked));
-      save();
-    });
-
-    link.title = '打开目录文章；再次点击当前目录可展开或收起子文章';
+    restoreCallbacks.push(restore);
+    control.addEventListener('change', persist);
     link.addEventListener('click', (event) => {
-      // Allow open-in-new-tab, download and other normal link behaviors.
       if (event.defaultPrevented || event.button !== 0 ||
           event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
-          link.target === '_blank') return;
+          link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
 
-      // First click navigates; only subsequent clicks on the active page toggle.
-      if (normalizePath(link.href) !== currentPath) return;
+      // First click on a different directory loads its own article.
+      if (href !== current) return;
+
+      // Second click on the already-open directory changes only its subtree.
       event.preventDefault();
-      input.checked = !input.checked;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+      control.checked = !control.checked;
+      control.dispatchEvent(new Event('change', { bubbles: true }));
     });
   });
 
-  // Browsers can restore stale form states when navigating back/forward.
   window.addEventListener('pageshow', (event) => {
-    if (event.persisted) folders.forEach(({ restore }) => restore());
+    if (event.persisted) restoreCallbacks.forEach((restore) => restore());
   });
 })();
