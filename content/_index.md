@@ -1,5 +1,5 @@
 ---
-title: "疯狂阿北"
+title: "Crazy abei"
 description: "商业和科技理解。"
 ---
 

@@ -55,14 +55,16 @@
   display: block;
   width: 100%;
   margin: 0;
-  font-family: inherit;
-  font-size: 1.875rem;
-  line-height: 1.35;
-  text-align: center;
+  line-height: 0;
 }
-#R-logo .logo-title,
 #R-header .site-subtitle { color: var(--INTERNAL-MENU-HEADER-color); }
-#R-logo .logo-title { display: block; overflow-wrap: anywhere; }
+#R-logo .brand-wordmark {
+  display: block;
+  width: 235px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
 #R-header .site-subtitle {
   margin: 0;
   max-width: 100%;
