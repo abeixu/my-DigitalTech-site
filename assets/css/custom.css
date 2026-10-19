@@ -3,16 +3,27 @@
   --MENU-WIDTH-S: 275px;
   --MENU-WIDTH-M: 275px;
   --MENU-WIDTH-L: 275px;
+  --site-background: #CECFFD;
+}
+/* Match the reference background and its narrow frame around the article. */
+@media screen {
+  body { background-color: var(--site-background); }
+  #R-body {
+    box-sizing: border-box;
+    background-color: var(--INTERNAL-MAIN-BG-color);
+    border-block: 10px solid var(--site-background);
+    border-inline-end: 10px solid var(--site-background);
+  }
 }
 /* Fixed colors for the title and directory areas only. */
 #R-sidebar {
   --menu-row-inset: 3.5pt;
   --menu-arrow-inset: 2pt;
   --menu-arrow-gap: 3.5pt;
-  --INTERNAL-MENU-HEADER-color: #FFFFFF;
-  --INTERNAL-MENU-HEADER-BG-color: #DA7757;
-  --INTERNAL-MENU-HEADER-BORDER-color: #DA7757;
-  --INTERNAL-MENU-SECTIONS-BG-color: #FAF9F5;
+  --INTERNAL-MENU-HEADER-color: #000000;
+  --INTERNAL-MENU-HEADER-BG-color: var(--site-background);
+  --INTERNAL-MENU-HEADER-BORDER-color: var(--site-background);
+  --INTERNAL-MENU-SECTIONS-BG-color: var(--site-background);
   --INTERNAL-MENU-SECTIONS-ACTIVE-BG-color: transparent;
   --INTERNAL-MENU-SECTIONS-LINK-color: #000000;
   --INTERNAL-MENU-SECTIONS-LINK-HOVER-color: #000000;
