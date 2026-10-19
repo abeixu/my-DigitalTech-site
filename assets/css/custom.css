@@ -506,3 +506,86 @@ body[data-site-area="people"] #R-body-inner {visibility:hidden;}
  .site-header {height:80px; flex-wrap:nowrap;align-content:center;gap:8px;}
  .site-header-nav {margin-inline-start:0;}
 }
+
+
+/* Crazy abei, 2026-10-19: 60px header, point sizes, link-only folder toggles. */
+/* CSS absolute lengths: 1pt = 4/3 CSS px at 100% browser zoom. */
+:root {
+  --site-header-height: 60px;
+  --abei-brand-size: 20pt;
+  --abei-subtitle-size: 16pt;
+  --abei-menu-size: 15pt;
+  --abei-body-size: 15pt;
+  --abei-sidebar-left: 25px;
+}
+
+/* Override both legacy mobile rules and original theme declaration. */
+@media screen {
+  .site-header {
+    height: var(--site-header-height);
+  }
+  .site-header a#R-logo,
+  .site-header a#R-logo:hover,
+  .site-header a#R-logo:visited {
+    font-size: var(--abei-brand-size);
+  }
+  .site-header .site-subtitle {
+    font-size: var(--abei-subtitle-size);
+  }
+
+  /* Remove all triangle/chevron targets. The folder text controls expansion
+     only when the corresponding article is already open. */
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label::before,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label::after {
+    display: none !important;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
+    font-size: var(--abei-menu-size);
+    line-height: 1.5;
+    min-height: 34px;
+    padding-inline-start: calc(var(--abei-sidebar-left) + var(--menu-title-indent, 0px));
+    padding-inline-end: 12px;
+  }
+  /* Relearn uses an additional active-link indentation; neutralize it. */
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li.active > a,
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu ul li.active > a {
+    margin-inline-start: 0;
+    width: 100%;
+    padding-inline-start: calc(var(--abei-sidebar-left) + var(--menu-title-indent, 0px));
+    padding-inline-end: 12px;
+  }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> label > input[type="checkbox"]) > a {
+    font-size: var(--abei-menu-size);
+    font-weight: 700;
+  }
+  #R-body-inner article,
+  #R-body-inner article.default {
+    font-size: var(--abei-body-size);
+  }
+}
+
+/* Preserve the requested 60px height on small screens. */
+@media screen and (max-width: 1100px) {
+  .site-header .site-subtitle {
+    font-size: var(--abei-subtitle-size);
+  }
+}
+@media screen and (max-width: 700px) {
+  .site-header {
+    height: var(--site-header-height);
+  }
+  .site-header a#R-logo,
+  .site-header a#R-logo:hover,
+  .site-header a#R-logo:visited {
+    font-size: var(--abei-brand-size);
+  }
+}
+@media screen and (max-width: 42rem) {
+  :root { --site-header-height: 60px; }
+  .site-header {
+    height: 60px;
+    flex-wrap: nowrap;
+    align-content: center;
+  }
+}

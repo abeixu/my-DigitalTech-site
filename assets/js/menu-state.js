@@ -1,36 +1,65 @@
-/* Start closed, then restore explicit changes to each native menu checkbox. */
+/* Folder titles are links first, disclosures second.
+ * - First visit to a folder: navigate to its article normally.
+ * - Clicking the already-open folder title: toggle child list.
+ * - Leaf article: always navigate normally, even if already selected.
+ * Keep the theme's native checkbox so its CSS animation still works. */
 (() => {
-  const inputs = document.querySelectorAll('#R-sidebar .R-sidebarmenu .collapsible-menu input[type="checkbox"][id]');
-  const keyFor = (input) => 'crazy-abei:menu:' + input.id;
-
-  const restore = () => {
-    let changed = false;
-    inputs.forEach((input) => {
-      let saved = null;
-      try {
-        saved = window.sessionStorage.getItem(keyFor(input));
-      } catch {
-        // First visits still start closed when browser storage is unavailable.
-      }
-      const isOpen = saved === 'open';
-      changed = changed || input.checked !== isOpen;
-      input.checked = isOpen;
-    });
-    return changed;
+  const normalizePath = (url) => {
+    const path = new URL(url, document.baseURI).pathname;
+    return (path.replace(/\/index\.html$/i, "/").replace(/\/+$/, "") || "/");
   };
+  const currentPath = normalizePath(window.location.href);
+  const folderSelector = '#R-sidebar .R-sidebarmenu ul.collapsible-menu li';
+  const folders = [];
 
-  restore();
-  inputs.forEach((input) => {
-    input.addEventListener('change', () => {
+  document.querySelectorAll(folderSelector).forEach((li) => {
+    const link = li.querySelector(':scope > a');
+    const input = li.querySelector(':scope > label > input[type="checkbox"]');
+    if (!link || !input) return;
+
+    const key = 'crazy-abei:folder:' + normalizePath(link.href);
+    const save = () => {
       try {
-        window.sessionStorage.setItem(keyFor(input), input.checked ? 'open' : 'closed');
+        sessionStorage.setItem(key, input.checked ? 'open' : 'closed');
       } catch {
-        // The checkbox still works without saved state.
+        // Interaction still works when browser storage is unavailable.
       }
+    };
+    const restore = () => {
+      try {
+        const saved = sessionStorage.getItem(key);
+        if (saved === 'open') input.checked = true;
+        else if (saved === 'closed') input.checked = false;
+      } catch {
+        // Leave the Hugo-provided initial checked state intact.
+      }
+      link.setAttribute('aria-expanded', String(input.checked));
+    };
+
+    restore();
+    folders.push({ restore });
+    input.addEventListener('change', () => {
+      link.setAttribute('aria-expanded', String(input.checked));
+      save();
+    });
+
+    link.title = '打开目录文章；再次点击当前目录可展开或收起子文章';
+    link.addEventListener('click', (event) => {
+      // Allow open-in-new-tab, download and other normal link behaviors.
+      if (event.defaultPrevented || event.button !== 0 ||
+          event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
+          link.target === '_blank') return;
+
+      // First click navigates; only subsequent clicks on the active page toggle.
+      if (normalizePath(link.href) !== currentPath) return;
+      event.preventDefault();
+      input.checked = !input.checked;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
     });
   });
-  // Browsers may restore form controls when navigating back or forward.
-  window.addEventListener('pageshow', () => {
-    if (restore()) window.dispatchEvent(new Event('resize'));
+
+  // Browsers can restore stale form states when navigating back/forward.
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) folders.forEach(({ restore }) => restore());
   });
 })();
