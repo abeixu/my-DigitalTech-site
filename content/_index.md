@@ -1,10 +1,3 @@
 ---
-title: "Crazy abei"
-description: "商业和科技理解。"
+title: "首页"
 ---
-
-商业和科技理解。
-
-## 开始阅读
-
-{{% children depth="1" sort="weight" %}}
