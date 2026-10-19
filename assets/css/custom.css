@@ -508,14 +508,14 @@ body[data-site-area="people"] #R-body-inner {visibility:hidden;}
 }
 
 
-/* Crazy abei, 2026-10-19: 60px header, point sizes, link-only folder toggles. */
-/* CSS absolute lengths: 1pt = 4/3 CSS px at 100% browser zoom. */
+/* Crazy abei: 60px header, pixel typography, link-only folder toggles. */
+/* Pixel font sizes mirror the user's 1:1 UI design. */
 :root {
   --site-header-height: 60px;
-  --abei-brand-size: 20pt;
-  --abei-subtitle-size: 16pt;
-  --abei-menu-size: 15pt;
-  --abei-body-size: 15pt;
+  --abei-brand-size: 20px;
+  --abei-subtitle-size: 16px;
+  --abei-menu-size: 15px;
+  --abei-body-size: 15px;
   --abei-sidebar-left: 25px;
 }
 
