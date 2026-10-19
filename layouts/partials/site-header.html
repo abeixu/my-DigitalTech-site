@@ -1,0 +1,16 @@
+<header id="site-header" class="site-header">
+  <div class="site-brand">
+    <a id="R-logo" href="{{ partial "permalink.gotmpl" (dict "to" .Site.Home) }}" aria-label="{{ site.Title }}，前往首页">
+      {{- with resources.Get "images/crazy-abei-wordmark.svg" | fingerprint }}
+      <img class="brand-wordmark" src="{{ .RelPermalink }}" alt="{{ site.Title }}" width="190" height="37">
+      {{- end }}
+    </a>
+    <span class="site-brand-divider" aria-hidden="true">｜</span>
+    <span class="site-subtitle">盯紧商业问题，关注科技、组织和人。</span>
+  </div>
+  <nav class="site-header-nav" aria-label="主题导航">
+    <span class="site-nav-item is-disabled" role="link" aria-disabled="true">商业问题</span>
+    <a class="site-nav-item is-active" href="{{ partial "permalink.gotmpl" (dict "to" .Site.Home) }}" aria-current="true">科技</a>
+    <span class="site-nav-item is-disabled" role="link" aria-disabled="true">组织和人</span>
+  </nav>
+</header>

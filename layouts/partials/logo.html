@@ -1,6 +1,1 @@
-<a id="R-logo" href="{{ partial "permalink.gotmpl" (dict "to" .Site.Home) }}" aria-label="{{ site.Title }}，前往首页">
-  {{- with resources.Get "images/crazy-abei-wordmark.svg" | fingerprint }}
-  <img class="brand-wordmark" src="{{ .RelPermalink }}" alt="{{ site.Title }}" width="235" height="45">
-  {{- end }}
-</a>
-<div class="site-subtitle">盯紧商业问题，关注科技、组织和人。</div>
+{{- /* The brand and subtitle now live in site-header.html above both columns. */ -}}
