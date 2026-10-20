@@ -3,17 +3,18 @@
   --MENU-WIDTH-S: 265px;
   --MENU-WIDTH-M: 265px;
   --MENU-WIDTH-L: 265px;
-  --site-header-height: 60px;
-  --site-background: #DCE6F0;
-  --abei-side-bg: #E3EAF2;
-  --abei-article-bg: #F5F5F5;
-  --abei-active-bg: #C9D8ED;
-  --abei-accent: #3D609D;
-  --abei-ink: #293B56;
-  --abei-muted: #667790;
-  --abei-brand: #112A5A;
-  --abei-subtitle: #43465A;
-  --abei-separator: #7D80A1;
+  --site-header-height: 65px;
+  --site-background: linear-gradient(135deg, #FFE6D0, #FFF3DC, #FFFDF4, #EAF5FF, #DCEEFF);
+  --abei-side-bg: transparent;
+  --abei-article-bg: transparent;
+  --abei-active-bg: rgba(255, 255, 255, .6);
+  --abei-hover-bg: rgba(255, 255, 255, .3);
+  --abei-accent: #2F61B1;
+  --abei-ink: #423642;
+  --abei-muted: #6D6671;
+  --abei-brand: #423642;
+  --abei-subtitle: #6D6671;
+  --abei-separator: rgba(91, 111, 128, .28);
   --abei-sidebar-left: 25px;
   --abei-sidebar-top: 20px;
   --abei-article-top: 20px;
@@ -30,6 +31,7 @@
     box-sizing: border-box;
     padding-top: var(--site-header-height);
     background: var(--site-background);
+    background-attachment: fixed;
   }
   .site-header {
     box-sizing: border-box;
@@ -43,7 +45,8 @@
     width: 100%;
     height: var(--site-header-height);
     padding: 0 max(var(--abei-article-pad), calc((100vw - 265px - var(--abei-article-max)) / 2)) 0 25px;
-    background: var(--site-background);
+    background: transparent;
+    border-bottom: 1px solid var(--abei-separator);
     font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
   }
   .site-brand {
@@ -128,6 +131,7 @@
     height: calc(100% - var(--site-header-height));
     min-height: 0;
     background: var(--abei-side-bg);
+    border-right: 1px solid var(--abei-separator);
     --INTERNAL-MENU-HEADER-color: var(--abei-ink);
     --INTERNAL-MENU-HEADER-BG-color: var(--abei-side-bg);
     --INTERNAL-MENU-HEADER-BORDER-color: var(--abei-side-bg);
@@ -186,7 +190,7 @@
     color: var(--abei-ink);
     background: var(--abei-active-bg);
   }
-  #R-sidebar .R-sidebarmenu ul.collapsible-menu li:not(.active) > a:hover { background: var(--abei-active-bg); }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu li:not(.active) > a:hover { background: var(--abei-hover-bg); }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:has(> input[type="checkbox"]) > a { font-weight: 700; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu > li:not(:has(> input[type="checkbox"])) > a { font-weight: 400; }
   body[data-site-area="home"] #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a { background: transparent; }
