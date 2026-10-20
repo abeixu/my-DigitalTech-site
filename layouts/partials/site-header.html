@@ -1,15 +1,17 @@
 {{- $isHome := .IsHome -}}
 {{- $isBusiness := eq .Section "business" -}}
 {{- $isPeople := eq .Section "people" -}}
-{{- $isTech := and (not $isHome) (not $isBusiness) (not $isPeople) -}}
+{{- $isSkills := eq .Section "skills" -}}
+{{- $isTech := and (not $isHome) (not $isBusiness) (not $isPeople) (not $isSkills) -}}
 <header id="site-header" class="site-header">
   <div class="site-brand">
     <span id="R-logo" class="brand-link" aria-label="疯狂阿北">疯狂阿北</span>
-    <span class="site-subtitle">先盯紧商业问题，再关注科技、组织和人。</span>
+    <span class="site-subtitle">先盯紧商业问题，再关注科技、组织和人，最后是专业技能。</span>
   </div>
   <nav class="site-header-nav" aria-label="主题导航">
     <a class="site-nav-item{{ if $isBusiness }} is-active{{ end }}" href="{{ "/business/" | relURL }}"{{ if $isBusiness }} aria-current="page"{{ end }}>商业问题</a>
     <a class="site-nav-item{{ if $isTech }} is-active{{ end }}" href="{{ "/llm/01-preface/" | relURL }}"{{ if $isTech }} aria-current="page"{{ end }}>科技</a>
     <a class="site-nav-item{{ if $isPeople }} is-active{{ end }}" href="{{ "/people/" | relURL }}"{{ if $isPeople }} aria-current="page"{{ end }}>组织和人</a>
+    <a class="site-nav-item{{ if $isSkills }} is-active{{ end }}" href="{{ "/skills/" | relURL }}"{{ if $isSkills }} aria-current="page"{{ end }}>专业技能</a>
   </nav>
 </header>

@@ -227,8 +227,10 @@
   .abei-meta-separator { width: 1px; height: 12px; background: var(--abei-muted); opacity: .65; }
   body[data-site-area="business"] #R-sidebar #R-content-wrapper,
   body[data-site-area="people"] #R-sidebar #R-content-wrapper,
+  body[data-site-area="skills"] #R-sidebar #R-content-wrapper,
   body[data-site-area="business"] #R-body-inner,
-  body[data-site-area="people"] #R-body-inner { visibility: hidden; }
+  body[data-site-area="people"] #R-body-inner,
+  body[data-site-area="skills"] #R-body-inner { visibility: hidden; }
 }
 
 @media screen and (max-width: 1100px) {
