@@ -1,6 +1,6 @@
 {{- with .Params.headingPost }}{{ . | safeHTML }}{{ end }}
+{{- if not .IsHome }}
 <div class="abei-article-meta">
-  <span>作者：{{ .Params.author | default "阿北" }}</span>
-  <span class="abei-meta-separator" aria-hidden="true"></span>
-  <span>更新日期：{{ if .Params.updatedAt }}{{ .Params.updatedAt }}{{ else }}{{ .Lastmod.Format "2006-01-02 15:04" }}{{ end }}</span>
+  作者：{{ .Params.author | default "阿北" }}｜字数：{{ .WordCount }}字｜更新日期：{{ .Lastmod.Format "2006-01-02" }}
 </div>
+{{- end }}

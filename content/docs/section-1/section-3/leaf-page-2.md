@@ -6,6 +6,7 @@ description: 原主题保留的示例页面。
 legacyExample: true
 disableToc: true
 outputs: [html]
+lastmod: "2026-10-18"
 ---
 
 # Leaf Page 2
