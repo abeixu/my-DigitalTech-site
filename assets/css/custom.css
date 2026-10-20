@@ -18,9 +18,16 @@
   --abei-sidebar-left: 25px;
   --abei-sidebar-top: 20px;
   --abei-article-top: 20px;
+  --abei-article-side-gap: 60px;
   --abei-article-pad: 30px;
   --abei-article-max: 1100px;
+  --abei-top-level-gap: 8px;
   --abei-row-gap: 4px;
+  --abei-top-level-size: 16px;
+  --abei-child-size: 14px;
+  --abei-brand-size: 20px;
+  --abei-subtitle-size: 16px;
+  --abei-body-size: 15px;
   --abei-article-line: 1.88;
 }
 
@@ -44,7 +51,7 @@
     gap: 20px;
     width: 100%;
     height: var(--site-header-height);
-    padding: 0 max(var(--abei-article-pad), calc((100vw - 265px - var(--abei-article-max)) / 2)) 0 25px;
+    padding: 0 60px 0 25px;
     background: transparent;
     border-bottom: .5px solid var(--abei-separator);
     font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
@@ -63,7 +70,7 @@
     align-items: center;
     justify-content: center;
     color: var(--abei-brand);
-    font: 900 20px/1 Arial, Helvetica, sans-serif;
+    font: 900 var(--abei-brand-size)/1 Arial, Helvetica, sans-serif;
     letter-spacing: -1.9px;
     white-space: nowrap;
     cursor: default;
@@ -72,7 +79,7 @@
     margin: 0;
     max-width: 100%;
     color: var(--abei-subtitle);
-    font-size: 16px;
+    font-size: var(--abei-subtitle-size);
     line-height: 1.25;
     white-space: nowrap;
   }
@@ -152,6 +159,9 @@
     position: relative;
     margin-bottom: var(--abei-row-gap);
   }
+  #R-sidebar .R-sidebarmenu.R-shortcutmenu-main > ul.collapsible-menu > li {
+    margin-bottom: var(--abei-top-level-gap);
+  }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 16px; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 32px; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu ul.collapsible-menu > li { --menu-title-indent: 48px; }
@@ -160,18 +170,20 @@
   #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > label { display: none !important; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a {
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 100%;
     min-height: 34px;
     padding: 5px 12px 5px calc(var(--abei-sidebar-left) + var(--menu-title-indent, 0px));
     color: var(--abei-ink);
     background: transparent;
-    font-size: 15px;
+    font-size: var(--abei-child-size);
     line-height: 1.5;
     text-decoration: none;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+  #R-sidebar .R-sidebarmenu.R-shortcutmenu-main > ul.collapsible-menu > li > a { font-size: var(--abei-top-level-size); }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu li.parent > a { background: transparent; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu li.active > a {
     width: 100%;
@@ -188,17 +200,18 @@
   body[data-site-area="home"] #R-sidebar .R-sidebarmenu ul.collapsible-menu li > a { background: transparent; }
 
   #R-body { box-sizing: border-box; min-width: 0; border: 0; border-radius: 0; background: var(--abei-article-bg); }
-  #R-body-inner {
+  #R-body #R-body-inner {
     box-sizing: border-box;
     width: 100%;
-    max-width: calc(var(--abei-article-max) + 2 * var(--abei-article-pad));
-    margin: 0 auto;
-    padding: var(--abei-article-top) var(--abei-article-pad) 120px;
+    max-width: none;
+    margin: 0;
+    padding: var(--abei-article-top) var(--abei-article-side-gap) 120px;
     background: transparent;
   }
+  #R-body #R-body-inner > .flex-block-wrapper { width: 100%; max-width: none; margin-inline: 0; }
   #R-body-inner article, #R-body-inner article.default {
     color: var(--abei-ink);
-    font-size: 15px;
+    font-size: var(--abei-body-size);
     line-height: var(--abei-article-line);
     text-align: left;
   }
@@ -237,15 +250,17 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .site-header { padding-right: 24px; }
   .site-header-nav { gap: 18px; }
   .site-header-nav a.site-nav-item { font-size: 14px; }
+}
+@media screen and (max-width: 960px) {
+  .site-header .site-subtitle { display: none; }
 }
 @media screen and (max-width: 700px) {
   .site-header { gap: 8px; padding: 0 15px; }
   .site-header .site-subtitle { display: none; }
   .site-header-nav { gap: 12px; }
   .site-header-nav a.site-nav-item { font-size: 12px; }
-  #R-body-inner { padding: 20px 22px 90px; }
+  #R-body #R-body-inner { padding: 20px 22px 90px; }
   #R-body-inner article h1 { font-size: 27px; }
 }

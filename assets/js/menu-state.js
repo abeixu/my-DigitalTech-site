@@ -9,6 +9,11 @@
   const current = canonical(location.href);
   const restoreCallbacks = [];
 
+  // The menu remains one line; native hover text reveals any clipped title.
+  document.querySelectorAll('#R-sidebar .R-sidebarmenu ul.collapsible-menu li > a').forEach((link) => {
+    if (!link.hasAttribute('title')) link.title = link.textContent.trim();
+  });
+
   document.querySelectorAll('#R-sidebar .R-sidebarmenu ul.collapsible-menu li').forEach((li) => {
     const link = li.querySelector(':scope > a');
     const control = li.querySelector(':scope > input[type="checkbox"]');
