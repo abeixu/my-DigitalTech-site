@@ -46,14 +46,14 @@
     height: var(--site-header-height);
     padding: 0 max(var(--abei-article-pad), calc((100vw - 265px - var(--abei-article-max)) / 2)) 0 25px;
     background: transparent;
-    border-bottom: 1px solid var(--abei-separator);
+    border-bottom: .5px solid var(--abei-separator);
     font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", sans-serif;
   }
   .site-brand {
     display: flex;
     align-items: center;
     flex: 0 1 auto;
-    gap: 17px;
+    gap: 10px;
     height: 100%;
     min-width: 0;
   }
@@ -67,13 +67,6 @@
     letter-spacing: -1.9px;
     white-space: nowrap;
     cursor: default;
-  }
-  .site-brand-divider {
-    display: block;
-    flex: none;
-    width: 1px;
-    height: 16pt;
-    background: var(--abei-separator);
   }
   .site-header .site-subtitle {
     margin: 0;
@@ -123,7 +116,7 @@
     height: calc(100% - var(--site-header-height));
     min-height: 0;
     background: var(--abei-side-bg);
-    border-right: 1px solid var(--abei-separator);
+    border-right: .5px solid var(--abei-separator);
     --INTERNAL-MENU-HEADER-color: var(--abei-ink);
     --INTERNAL-MENU-HEADER-BG-color: var(--abei-side-bg);
     --INTERNAL-MENU-HEADER-BORDER-color: var(--abei-side-bg);
@@ -240,13 +233,12 @@
 
 @media screen and (max-width: 1100px) {
   .site-header { padding-right: 24px; }
-  .site-brand { gap: 12px; }
   .site-header-nav { gap: 18px; }
   .site-header-nav a.site-nav-item { font-size: 14px; }
 }
 @media screen and (max-width: 700px) {
   .site-header { gap: 8px; padding: 0 15px; }
-  .site-brand-divider, .site-header .site-subtitle { display: none; }
+  .site-header .site-subtitle { display: none; }
   .site-header-nav { gap: 12px; }
   .site-header-nav a.site-nav-item { font-size: 12px; }
   #R-body-inner { padding: 20px 22px 90px; }
