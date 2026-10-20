@@ -11,7 +11,7 @@
 
   document.querySelectorAll('#R-sidebar .R-sidebarmenu ul.collapsible-menu li').forEach((li) => {
     const link = li.querySelector(':scope > a');
-    const control = li.querySelector(':scope > label > input[type="checkbox"]');
+    const control = li.querySelector(':scope > input[type="checkbox"]');
     if (!link || !control) return; // Leaf pages have no disclosure.
     const href = canonical(link.href);
     const storageKey = 'crazy-abei:folder:' + href;
