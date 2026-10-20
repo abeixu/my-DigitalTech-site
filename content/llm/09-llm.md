@@ -1,5 +1,5 @@
 ---
-title: "大模型LLM"
+title: "大模型LLMs"
 weight: 90
 ---
 
