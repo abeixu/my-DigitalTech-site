@@ -109,14 +109,6 @@
     color: var(--abei-accent);
     font-weight: 750;
   }
-  .site-header-nav a.site-nav-item.is-active::after {
-    content: "";
-    position: absolute;
-    top: calc(100% + 9px);
-    inset-inline: 0;
-    height: 2px;
-    background: var(--abei-accent);
-  }
   .site-header-nav a.site-nav-item:not(.is-active):hover { color: var(--abei-accent); }
   .site-header-nav a.site-nav-item:hover { text-decoration: none; }
   .site-header a:focus-visible { outline: 2px solid var(--abei-accent); outline-offset: 5px; }
@@ -155,6 +147,13 @@
   #R-sidebar #R-content-wrapper > .R-sidebarmenu { border-inline-end: 0; }
   #R-sidebar .R-sidebarmenu .nav-title { display: none; }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu ul { padding-inline-start: 0; }
+  #R-sidebar .R-sidebarmenu ul.collapsible-menu > li > input + label ~ ul.abei-animated-submenu {
+    display: block !important;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+  }
   #R-sidebar .R-sidebarmenu ul.collapsible-menu > li {
     --menu-title-indent: 0px;
     position: relative;
