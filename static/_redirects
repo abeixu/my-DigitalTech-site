@@ -1,1 +1,3 @@
 / /llm/01-preface/ 302
+/llm/technology-inspired-thinking/ /technology-inspired-thinking/ 301
+/llm/technology-inspired-thinking/* /technology-inspired-thinking/:splat 301

@@ -15,8 +15,8 @@
 ## 内容与文件
 
 - `content/docs/`：智能体Agents 栏目，保留既有路径。
-- `content/llm/`：大模型LLMs 栏目，原有九篇文章与“科技启发思维”文章集按 front matter 的 `weight` 排序。
-- `content/llm/technology-inspired-thinking/`：六篇待补正文的文章，标题和顺序已经建立。
+- `content/llm/`：大模型LLMs 栏目，原有九篇文章按 front matter 的 `weight` 排序。
+- `content/technology-inspired-thinking/`：与大模型LLMs 平级的“科技启发思维”栏目，六篇待补正文的文章已按顺序建立。原先短暂使用的 `/llm/technology-inspired-thinking/` 路径跳转到新路径。
 - `content/business/`、`content/people/`、`content/skills/`：顶部导航对应的暂存栏目。
 - 隐藏的 Relearn 示例文章保留旧 URL，并通过 `layouts/partials/content.html` 显示兼容提示。
 - `hugo.yaml`：站点与主题功能配置。
