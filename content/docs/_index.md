@@ -1,5 +1,5 @@
 ---
-title: "智能体Agents"
+title: "智能体Agent"
 weight: 10
 lastmod: "2026-10-25"
 ---

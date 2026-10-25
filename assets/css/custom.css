@@ -114,6 +114,12 @@
   .site-header a:focus-visible { outline: 2px solid var(--abei-accent); outline-offset: 5px; }
 }
 
+/* Preserve Agent heading casing and soften the diagram hover outline. */
+#R-body-inner.docs article h1 { text-transform: none; }
+#R-body-inner.docs article a.lightbox-link:is(:hover, :active, :focus) > img:only-child:empty {
+  outline-color: #c8d8ee;
+}
+
 /* Keep the sidebar flat; only the current link owns the selected background. */
 #R-header-wrapper, #R-homelinks, #R-topbar, #R-header-topbar { display: none; }
 @media screen {
