@@ -241,12 +241,14 @@
   }
   #R-body-inner article .abei-article-meta + :is(p, blockquote, h2, h3, ul, ol) { margin-top: 0; }
   #R-body-inner article .abei-article-meta + blockquote > p:first-child { margin-top: 0; }
-  #R-body-inner article blockquote { border-inline-start-width: .3rem; }
+  #R-body-inner article blockquote { border-inline-start-width: .15rem; }
   #R-body-inner article blockquote p {
     font-size: inherit;
     font-style: normal;
     opacity: 1;
   }
+  #R-body-inner article blockquote > p:has(+ .highlight) { margin-bottom: 0; }
+  #R-body-inner article blockquote > p + .highlight > pre { margin-top: 0; }
   body[data-site-area="business"] #R-sidebar #R-content-wrapper,
   body[data-site-area="people"] #R-sidebar #R-content-wrapper,
   body[data-site-area="skills"] #R-sidebar #R-content-wrapper,
